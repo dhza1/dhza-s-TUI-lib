@@ -6,7 +6,7 @@
 #include <map>
 #include <ncurses.h>
 void clearscreen() {
-    std::system("clear");
+    std::system("clear"); // you might need to change this depending on your system
 }
 class TUI {
 public:
