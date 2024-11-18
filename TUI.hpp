@@ -70,7 +70,6 @@ public:
                 return selection;
             }
         }
-        endwin();
     }
 private:
     int totalamount = 0;
