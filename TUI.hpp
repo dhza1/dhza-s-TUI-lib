@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <map>
 #include <ncurses.h>
+
 void clearscreen() {
     std::system("clear"); // you might need to change this depending on your system
 }
