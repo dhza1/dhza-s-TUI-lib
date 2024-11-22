@@ -5,9 +5,8 @@
 #include <cstdlib>
 #include <map>
 #include <ncurses.h>
-
 void clearscreen() {
-    std::system("clear"); // you might need to change this depending on your system
+    std::system("clear");
 }
 class TUI {
 public:
@@ -16,7 +15,7 @@ public:
         options.insert(std::make_pair(totalamount - 1, option));
     }
 
-    int select(std::string pre_print="") {
+    int select(std::string pre_print="", int row_=2) {
         while (true) {
             // start random bullshit
             initscr();
@@ -33,11 +32,14 @@ public:
             printw("ARROW KEYS ");
             attrset(COLOR_PAIR(10));
             printw("to navegate");
-            int row = 2;
+            move(1,0);
+            printw("%s", pre_print.c_str());
+            int row = row_;
             move(row,0);
             for (auto& option : options) {
                 row++;
                 move(row,0);
+                // "i would kill myself but i still havent finished this" --me at 3 am
                 if (option.first == selection) {
                     attrset(COLOR_PAIR(1));
                     printw("[*] >    ");
@@ -71,6 +73,7 @@ public:
                 return selection;
             }
         }
+        endwin();
     }
 private:
     int totalamount = 0;
